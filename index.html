@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script >
+class MoveStrategy{
+    move(){
+        throw new Error("error the move method ");
+    }
+}
+
+class FlyStrategy extends MoveStrategy{
+    move(){
+        return "the birth can fly";
+    }
+}
+
+class walkStrategy extends MoveStrategy{
+    move(){
+        return "the birth can walk";
+    }
+}
+
+class Animal {
+    constructor(MoveStrategy){
+        this.MoveStrategy =MoveStrategy;
+    }
+
+
+    setMoveStrategy(MoveStrategy) {
+        this.MoveStrategy =MoveStrategy;
+    }
+    move(){
+        return this.MoveStrategy.move();
+    }
+    
+}
+
+const bird =new Animal(new FlyStrategy());
+console.log(bird.move());
+
+const cat =new Animal(new walkStrategy());
+console.log(cat.move());
+
+
+
+
+
+    </script>
+</body>
+</html>
